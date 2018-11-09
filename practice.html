@@ -2,21 +2,24 @@
 <html>
     <head>
         <script>
-            function c2f(c){
-                var f = (9/5)*c +32;
-                return Math.floor(f);
-
+            function insertItem(){
+                var container = document.getElementById("container");
+                var item = document.createElement("li");
+                item.textContent = "hello";
+                container.appendChild(item);
             }
-            function convert(){
-                var c = document.getElementById("celsius").value;
-                var f = c2f(c);
-                var s = "摂氏 : " + c + "度　華氏 : " + f + "度";
-                document.getElementById("result").textContent = s;
+            function removeItem(){
+                var container = document.getElementById("container");
+                var item = container.lastChild;
+                if(item){
+                    container.removeChild(item);
+                }
             }
         </script>
     </head>
     <body>
-        <input id="celsius" type="range" min="0" max="100" onchange="convert()"/> <!--(1)-->
-        <p id="result"></p>
+        <button onclick="insertItem()">insert</button>
+        <button onclick="removeItem()">delete</button>
+        <ol id="container"></ol>
     </body>
 </html>
