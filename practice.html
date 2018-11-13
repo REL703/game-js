@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            function insertItem(){
-                var container = document.getElementById("container");
-                var item = document.createElement("li");
-                item.textContent = "hello";
-                container.appendChild(item);
+        <style>
+            .cell{
+                width: 100px;
+                height: 100px;
+                font-size: 60px;
+                text-align: center;
             }
-            function removeItem(){
-                var container = document.getElementById("container");
-                var item = container.lastChild;
-                if(item){
-                    container.removeChild(item);
+        </style>
+        <script>
+            var count = 0;
+            function clickMe(e){
+                if(count++%2 == 0){
+                    e.textContent= "○";
+                }
+                else{
+                    e.textContent= "×";
                 }
             }
         </script>
     </head>
     <body>
-        <button onclick="insertItem()">insert</button>
-        <button onclick="removeItem()">delete</button>
-        <ol id="container"></ol>
+        <table border="1">
+            <tr>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+            </tr>
+            <tr>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+            </tr>
+            <tr>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+                <td class="cell" onclick="clickMe(this);">  </td>
+            </tr>
+        </table>
     </body>
 </html>
