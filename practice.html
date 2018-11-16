@@ -1,27 +1,31 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <script>
-        Array.prototype.shuffle = function(){
-            var i = this.length;
-            while(i){
-                var j = Math.floor(Math.random() * i);
-                var t = this[--i];
-                this[i] = this[j];
-                this[j] = t;
-            }
-            return this;
+        function minmax(){
+            var n = document.getElementById("randomRange").value;
+            var a = Math.min(3, n);//3とnの小さいほうをaに代入。
+            var b = Math.max(3, n);//3とnの大きいほうをbに代入。
+            var c = Math.max(3, Math.min(6, n));//3以上6以下
+            var s = "n=" + n + " min(3, n) = " + a + " max(3, n) = " + b + " c = " + c;
+
+            document.getElementById("info").textContent = s;
         }
 
-        function shuffle(){
-            var cards = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
-            cards.shuffle();
-            document.getElementById("result").textContent = cards.join(",");
+        function random(){
+            var n = document.getElementById("randomRange").value;
+            var a = Math.random();
+            var b = Math.random(a * n);
+            var s = "n =" + n + "a = " + a + "b =" + b;
+            document.getElementById("info").textContent = s;
+            Math.sqrt(n)
         }
     </script>
 </head>
 <body>
-    <button onclick="shuffle()">shuffle</button>
-    <p id="result"></p>
+    <input type="range" min="0" max="10" id="randomRange"/>
+    <button onclick="minmax()">min/max</button>
+    <button onclick="random()">random</button>
+    <p id="info"></p>
 </body>
 </html>
