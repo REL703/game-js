@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script>
-        function minmax(){
-            var n = document.getElementById("randomRange").value;
-            var a = Math.min(3, n);//3とnの小さいほうをaに代入。
-            var b = Math.max(3, n);//3とnの大きいほうをbに代入。
-            var c = Math.max(3, Math.min(6, n));//3以上6以下
-            var s = "n=" + n + " min(3, n) = " + a + " max(3, n) = " + b + " c = " + c;
+    <head>
+        <script>
+            var ctx;
+            function init(){
+                var canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
 
-            document.getElementById("info").textContent = s;
-        }
+                for(var i = 0; i < 12; i++){
+                    ctx.save();
+                    var r = Math.PI / 6*i;
+                    ctx.translate(100, 100);
+                    ctx.rotate(r);
 
-        function random(){
-            var n = document.getElementById("randomRange").value;
-            var a = Math.random();
-            var b = Math.random(a * n);
-            var s = "n =" + n + "a = " + a + "b =" + b;
-            document.getElementById("info").textContent = s;
-            Math.sqrt(n)
-        }
-    </script>
-</head>
-<body>
-    <input type="range" min="0" max="10" id="randomRange"/>
-    <button onclick="minmax()">min/max</button>
-    <button onclick="random()">random</button>
-    <p id="info"></p>
-</body>
+                    ctx.beginPath();
+                    ctx.moveTo(0, -60);
+                    ctx.lineTo(0, -50);
+                    ctx.stroke();
+
+                    ctx.restore();
+                }
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <canvas id="canvas" width="600" height="400"></canvas>
+    </body>
 </html>
